@@ -1,0 +1,13 @@
+[package]
+name = "resolve"
+version = "0.1.0"
+authors = ["Sachin <sachinbeniwal0101@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
+rand = "0.8.5"
+
+[dependencies.hickory-dns]
+version = "0.24.1"
+default_features = false
