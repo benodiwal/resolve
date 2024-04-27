@@ -6,7 +6,7 @@ pub struct Args {
     #[clap(required=true)]
     pub domain_name: Option<String>,
 
-    #[clap(short = 's', long="dns-server", required=false, default_value = "1.1.1.1")]
+    #[clap(short = 's', long="dns-server", required=false)]
     pub dns_server: Option<String>,
 }
 

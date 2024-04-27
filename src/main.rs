@@ -1,5 +1,6 @@
 mod cli;
 mod resolver;
+mod utils;
 
 use cli::Args;
 use resolver::resolve;

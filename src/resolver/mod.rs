@@ -1,22 +1,15 @@
-use std::net::SocketAddr;
-
-use trust_dns_resolver::{config::ResolverConfig, Resolver};
-use trust_dns_resolver::config::{NameServerConfig, Protocol, ResolverOpts};
+use trust_dns_resolver::Resolver;
+use trust_dns_resolver::config::ResolverOpts;
+use crate::utils::{resolver_configuration, DEFAULT_DNS_SERVER};
 
 pub fn resolve(domain: &str, dns_server: Option<&str>) {
     let resolver_config = match dns_server {
         Some(ip_str) => {
-            
-            let ip = ip_str.parse().unwrap_or_else(|err| {
-                eprintln!("Error parsing IP address: {}", err);
-                std::process::exit(1);
-            });
-
-            let custom_dns_server = NameServerConfig::new(SocketAddr::new(ip, 53), Protocol::Tcp);
-            ResolverConfig::from_parts(None, Vec::new(), vec![custom_dns_server])
+            resolver_configuration(ip_str, false)
         }
-
-        None => ResolverConfig::default(),
+        None => {
+            resolver_configuration(DEFAULT_DNS_SERVER, true)
+        }
     };
 
     let resolver_opts = ResolverOpts::default();
