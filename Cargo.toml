@@ -7,7 +7,4 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
 rand = "0.8.5"
-
-[dependencies.hickory-dns]
-version = "0.24.1"
-default_features = false
+trust-dns-resolver = "0.23.2"
